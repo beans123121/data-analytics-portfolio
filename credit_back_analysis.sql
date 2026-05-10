@@ -1,29 +1,34 @@
-# Material Credit Back Analysis
-
-## Overview
-This project analyzes aircraft material returns (credited back items) to identify which parts are frequently returned to the warehouse. Understanding credit-back patterns helps improve inventory accuracy, reduce unnecessary re-ordering, and enhance material handling processes in aircraft maintenance operations.
-
----
-
-## Business Question
-Which aircraft materials are most frequently credited back to the warehouse, and what does this indicate about inefficiencies in material issuance and usage?
-
----
-
-## Data Source
-The dataset was extracted from Quantum Control, an ERP system powered by Oracle used for aircraft maintenance and inventory management. The data includes material issuance and usage records across multiple aircraft within a single customer environment.
-
----
-
-## Analysis Approach
-Credit-back quantities were calculated using the difference between issued and used materials. This assumes that unused issued materials are returned to the warehouse and recorded as credited back.
-
----
-
-## SQL Query Used
-
-```sql
--- Credited back items using adjustment logic
+-- =========================================
+-- Project Title: Material Credit Back Analysis
+--
+-- Objective:
+-- Identify aircraft materials with the highest credited-back quantities.
+--
+-- Business Question:
+-- Which materials generate the highest credited-back quantities and may indicate inefficiencies in material issuance and planning?
+--
+-- Skills Used:
+-- SUM
+-- GROUP BY
+-- ORDER BY
+-- Arithmetic Operations
+--
+-- I used:
+-- SUM() to calculate total credited-back quantity per material by aggregating differences between issued and used quantities
+-- GROUP BY to group records by part_number for material-level analysis
+-- WHERE clause to filter only cases where issued quantity is greater than used quantity
+-- ORDER BY to rank materials from highest to lowest credited-back quantity
+-- Arithmetic operation (quantity_issued - quantity_used) to compute actual credited-back quantity per transaction
+--
+-- Insight:
+-- Certain materials consistently generate higher credited-back quantities, indicating possible over-issuance during maintenance operations. 
+-- Improving forecasting accuracy and material issuance planning may help reduce unnecessary returns and improve operational efficiency.
+--
+-- Observation:
+-- Only a subset of materials contributes significantly to total credited-back quantities.
+-- Credit-back activity is not evenly distributed across all part numbers.
+-- Some materials show repeated differences between issued and used quantities.
+-- Many parts show little to no credited-back quantities, indicating more controlled or accurate issuance patterns.
 
 SELECT 
     part_number,
