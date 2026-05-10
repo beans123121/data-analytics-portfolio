@@ -5,6 +5,17 @@ This project contains three (3) SQL-based analyses on aircraft maintenance mater
 ## Overview
 This project analyzes aircraft maintenance materials to identify usage patterns and material wastage. The objective is to support improved inventory planning, reduce inefficiencies, and enhance operational decision-making in aircraft maintenance processes.
 
+## Projects Included
+
+### 1. Commonly Used Materials Analysis
+Identifies the most frequently used aircraft materials based on total quantity issued.
+
+### 2. Material Wastage Analysis
+Analyzes materials with the highest wastage to identify inefficiencies in inventory usage.
+
+### 3. Material Credit Back Analysis
+Identifies materials returned to the warehouse due to over-issuance or unused stock.
+
 ---
 
 ## Data Source & Extraction Process
